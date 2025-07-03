@@ -1,0 +1,42 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Maven@3
+  displayName: 'Build adminsystem'
+  inputs:
+    mavenPomFile: 'adminsystem/pom.xml'
+    goals: 'clean package -DskipTests'
+
+- task: Maven@3
+  displayName: 'Build aisystem'
+  inputs:
+    mavenPomFile: 'aisystem/pom.xml'
+    goals: 'clean package -DskipTests'
+
+- task: Maven@3
+  displayName: 'Build subscriber'
+  inputs:
+    mavenPomFile: 'subscriber/pom.xml'
+    goals: 'clean package -DskipTests'
+
+- task: Maven@3
+  displayName: 'Build ebookplatform'
+  inputs:
+    mavenPomFile: 'ebookplatform/pom.xml'
+    goals: 'clean package -DskipTests'
+
+- task: Maven@3
+  displayName: 'Build pointsystem'
+  inputs:
+    mavenPomFile: 'pointsystem/pom.xml'
+    goals: 'clean package -DskipTests'
+
+- task: Maven@3
+  displayName: 'Build manageauthor'
+  inputs:
+    mavenPomFile: 'manageauthor/pom.xml'
+    goals: 'clean package -DskipTests'
